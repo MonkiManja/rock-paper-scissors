@@ -37,6 +37,25 @@ function round(pSelect, cSelect){//Takes player selection and computer selection
 }
 
 
+function game(){ 
+    while(userLives > 0 && robotLives > 0){
+        let pInput;
+        round(parseInt(prompt(pInput)), getComputerChoice());
+
+        console.log("LIVES: -Computer: "+ robotLives + "   -You: " + userLives)
+        if(userLives == 0){
+            console.log("!!!GAME OVER!!!");
+            userLives = 5;
+            robotLives = 5;
+        } else if(robotLives == 0){
+            console.log("YOU WON THE MATCH");
+            userLives = 5;
+            robotLives = 5;
+        }
+    }
+}
+
+
 function numTranslator(num){
     if(num == 0){
         return "rock";
@@ -49,18 +68,5 @@ function numTranslator(num){
     }
 }
 
-function game(){ 
-    while(userLives > 0 && robotLives > 0){
-        let pInput;
-        round(parseInt(prompt(pInput)), getComputerChoice());
-
-        console.log("LIVES: -Computer: "+ robotLives + "   -You: " + userLives)
-        if(userLives == 0){
-            console.log("!!!GAME OVER!!!");
-        } else if(robotLives == 0){
-            console.log("YOU WON THE MATCH");
-        }
-    }
-}
 
 game();
