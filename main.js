@@ -11,8 +11,7 @@
 
 */
 
-let userLives = 5;
-let robotLives = 5;
+
 
 console.log(" Rock: 0  Paper: 1  Scissors: 2 ")
 
@@ -38,19 +37,21 @@ function round(pSelect, cSelect){//Takes player selection and computer selection
 
 
 function game(){ 
+    let userLives = 5;
+    let robotLives = 5;
+    let pInput;
     while(userLives > 0 && robotLives > 0){
-        let pInput;
-        round(parseInt(prompt(pInput)), getComputerChoice());
+        pInput = parseInt(prompt("Input 0 to 2"));
+
+        round(pInput, getComputerChoice());
 
         console.log("LIVES: -Computer: "+ robotLives + "   -You: " + userLives)
         if(userLives == 0){
             console.log("!!!GAME OVER!!!");
-            userLives = 5;
-            robotLives = 5;
+            break;
         } else if(robotLives == 0){
             console.log("YOU WON THE MATCH");
-            userLives = 5;
-            robotLives = 5;
+            break;
         }
     }
 }
