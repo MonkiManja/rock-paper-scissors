@@ -1,15 +1,4 @@
-/* 
-    There's 3 elections: -Rock (0)    (kills scissors {2})
-                         -Paper (1)   (kills rock {0})
-                         -Scissors(2) (kills paper {1})
 
-    You have 5 lives and 3 elections for each.
-    So i will need the computer/robot lives and the user one
-
-    When the player submits his selection, the computer needs to pick a random one
-    and depending in who wins i need to lower adversary's lives.
-
-*/
 let userLives = 5;
 let robotLives = 5;
 let userGames = 0;
@@ -20,7 +9,13 @@ const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 
 const comment_1 = document.querySelector("#comment-1");
-const comment_2 = document.querySelector("#comment-2"); 
+
+const robot_health = document.querySelector("#robot-health")
+const chad_health = document.querySelector("#chad-health")
+
+const restartPage = document.querySelector("#restart-page");
+const restartButton = document.querySelector("#restart-page > button");
+const restartText = document.querySelector("#restart-page > p")
 
 
 console.log(buttons)
@@ -30,39 +25,34 @@ function getComputerChoice(){
 }
 
 function round(pSelect, cSelect){//Takes player selection and computer selection
-    console.log("Computer selected: " + numTranslator(cSelect) )
     if(pSelect == cSelect){ 
-        comment_1.textContent = "It's a tie!"
-        comment_2 = ""
+        comment_1.textContent = "It's a tie!";
     } else if ((pSelect == 0 && cSelect == 2) || (pSelect == 1 && cSelect == 0) || (pSelect == 2 && cSelect == 1) ){
         comment_1.textContent = "You win this round! " + numTranslator(pSelect) + " BEATS " + numTranslator(cSelect);
-        comment_2 = ""
         robotLives -= 1;
+        lowerLife(robot_health, robotLives);
     } else {
-        comment_1.textContent = "You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect)
-        comment_2 = ""
+        comment_1.textContent = "You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect);
         userLives -= 1;
+        lowerLife(chad_health, userLives);
     }
     if(userLives == 0){
-        comment_2.textContent = "Unlucky! You lost the game" 
-        userLives = 5;
-        robotLives = 5;
-        robotGames += 1
+        restartPage.style.transform = "translateY(0%)";
+        robotGames += 1;
+        restartText.textContent = `Wins: ${userGames} ~ Loses: ${robotGames}`
+        return;
     } 
     else if(robotLives == 0){
-        comment_2.textContent = "Congrats! You won the game" 
-        userLives = 5;
-        robotLives = 5;
+        restartPage.style.transform = "translateY(0%)";
         userGames += 1
+        restartText.textContent = `Wins: ${userGames} ~ Loses: ${robotGames}`
+        return;
     }
 
 }
 
 
 function game(){ 
-    
-    userLives = 5;
-    robotLives = 5;
     rock.addEventListener("click", () => {
         pInput = 0;
         round(pInput, getComputerChoice())
@@ -95,4 +85,30 @@ function numTranslator(num){
 
 
 
+function lowerLife(life, lives){
+    if(lives == 4){
+        life.style.width = "80%";
+    } else if(lives == 3){
+        life.style.width = "60%";
+    } else if(lives == 2){
+        life.style.width = "40%";
+    } else if(lives == 1){
+        life.style.width = "20%";
+    } else if(lives == 0){
+        life.style.width = "0%";
+    }
+}
+
+
+function restartGame(){
+    restartPage.style.transform = "translateY(-100%)";
+    userLives = 5;
+    robotLives = 5;
+    chad_health.style.width = "100%";
+    robot_health.style.width = "100%";
+
+}
+
 game();
+
+restartButton.addEventListener("click", () => restartGame())

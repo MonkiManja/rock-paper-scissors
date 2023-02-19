@@ -36,12 +36,13 @@ h1, p {
     gap:20px;
     border-radius: 30px;
     margin-inline:auto;
+   
 }
 
 
 .rps-buttons{
     background-color: var(--bright-color);
-    
+    transition-duration: 200ms;
     height: 400px;
     width: 400px;
     font-size: 600%;
@@ -60,6 +61,7 @@ h1, p {
 
 #comment-1, #comment-2 {
     font-size: 2em;
+   
 }
 
 #YOU, #ROBOT {
@@ -87,7 +89,8 @@ h1, p {
 }
 #chad-health, #robot-health{
     background-color: #D72323;
-    margin-left: 15px;
+    transition-duration: 500ms;
+    margin: 15px;
     width: 270px;
     height: 30px;
     border-radius: 10px;
@@ -101,4 +104,31 @@ h1, p {
     position:fixed;
     top: 45%;
     right: 0%;
+}
+
+#restart-page {
+    margin-top: -5%;
+    display:flex;
+    transform: translateY(-100%);
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+    background-color: var(--background-color1);
+    transition: transform 1s ease-in-out;
+    
+}
+#restart-page > button {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: var(--red-color);
+    transition: 200ms ease-in;
+
+}
+#restart-page > button:active{
+    background-color: #921c16;
 }
