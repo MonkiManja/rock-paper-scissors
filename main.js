@@ -37,26 +37,20 @@ function round(pSelect, cSelect){//Takes player selection and computer selection
     } else if ((pSelect == 0 && cSelect == 2) || (pSelect == 1 && cSelect == 0) || (pSelect == 2 && cSelect == 1) ){
         comment_1.textContent = "You win this round! " + numTranslator(pSelect) + " BEATS " + numTranslator(cSelect);
         comment_2 = ""
-        console.log("You win this round! " + numTranslator(pSelect) + " BEATS " + numTranslator(cSelect));
         robotLives -= 1;
-        return "You win this round! " + numTranslator(pSelect) + " BEATS " + numTranslator(cSelect);
     } else {
         comment_1.textContent = "You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect)
         comment_2 = ""
-        console.log("You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect));
         userLives -= 1;
-        return "You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect);
     }
     if(userLives == 0){
         comment_2.textContent = "Unlucky! You lost the game" 
-        console.log("YOU LOST THE GAME")
         userLives = 5;
         robotLives = 5;
         robotGames += 1
     } 
     else if(robotLives == 0){
         comment_2.textContent = "Congrats! You won the game" 
-        console.log("YOU WON THE GAME")
         userLives = 5;
         robotLives = 5;
         userGames += 1
