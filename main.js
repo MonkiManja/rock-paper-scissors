@@ -10,10 +10,20 @@
     and depending in who wins i need to lower adversary's lives.
 
 */
+let userLives = 5;
+let robotLives = 5;
+let userGames = 0;
+let robotGames = 0;
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+const comment_1 = document.querySelector("#comment-1");
+const comment_2 = document.querySelector("#comment-2"); 
 
 
-
-console.log(" Rock: 0  Paper: 1  Scissors: 2 ")
+console.log(buttons)
 
 function getComputerChoice(){
     return Math.floor(Math.random() * 3);
@@ -22,52 +32,70 @@ function getComputerChoice(){
 function round(pSelect, cSelect){//Takes player selection and computer selection
     console.log("Computer selected: " + numTranslator(cSelect) )
     if(pSelect == cSelect){ 
-        console.log("It's a tie!")
+        comment_1.textContent = "It's a tie!"
     } else if ((pSelect == 0 && cSelect == 2) || (pSelect == 1 && cSelect == 0) || (pSelect == 2 && cSelect == 1) ){
+        comment_1.textContent = "You win this round! " + numTranslator(pSelect) + " BEATS " + numTranslator(cSelect);
         console.log("You win this round! " + numTranslator(pSelect) + " BEATS " + numTranslator(cSelect));
         robotLives -= 1;
         return "You win this round! " + numTranslator(pSelect) + " BEATS " + numTranslator(cSelect);
     } else {
+        comment_1.textContent = "You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect)
         console.log("You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect));
         userLives -= 1;
         return "You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect);
+    }
+    if(userLives == 0){
+        comment_2.textContent = "Unlucky! You lost the game" 
+        console.log("YOU LOST THE GAME")
+        userLives = 5;
+        robotLives = 5;
+        robotGames += 1
+    } 
+    else if(robotLives == 0){
+        comment_2.textContent = "Congrats! You won the game" 
+        console.log("YOU WON THE GAME")
+        userLives = 5;
+        robotLives = 5;
+        userGames += 1
     }
 
 }
 
 
 function game(){ 
-    let userLives = 5;
-    let robotLives = 5;
-    let pInput;
-    while(userLives > 0 && robotLives > 0){
-        pInput = parseInt(prompt("Input 0 to 2"));
+    
+    userLives = 5;
+    robotLives = 5;
+    rock.addEventListener("click", () => {
+        pInput = 0;
+        round(pInput, getComputerChoice())
+    })
+    paper.addEventListener("click", () => {
+        pInput = 1;
+        round(pInput, getComputerChoice())
+    })
+    scissors.addEventListener("click", () => {
+        pInput = 2;
+        round(pInput, getComputerChoice())
+    })
 
-        round(pInput, getComputerChoice());
-
-        console.log("LIVES: -Computer: "+ robotLives + "   -You: " + userLives)
-        if(userLives == 0){
-            console.log("!!!GAME OVER!!!");
-            break;
-        } else if(robotLives == 0){
-            console.log("YOU WON THE MATCH");
-            break;
-        }
-    }
+    
+    
 }
 
 
 function numTranslator(num){
     if(num == 0){
-        return "rock";
+        return "🗿";
     } 
     if(num == 1){
-        return "paper";
+        return "📄";
     }
     if(num == 2){
-        return "scissors"
+        return "✂️"
     }
 }
+
 
 
 game();

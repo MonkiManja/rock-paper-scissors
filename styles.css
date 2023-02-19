@@ -1,7 +1,60 @@
+:root{
+    --background-color1: #000000;
+    --background-color2: rgb(15,15,15);
+    --dark-color: #3E3636;
+    --red-color: #D72323;
+    --bright-color: #F5EDED;
+}
+
+
 body {
-    background-color: rgb(15,15,15);
-    
+    background-color: var(--background-color2);
+    font-family: 'Roboto', sans-serif;;
 }
 h1, p {
-    color: lightcoral
+    color: var(--bright-color);
+    text-align: center;
+    
+}
+
+#buttons{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color2);
+    padding: 20px;
+    height: 500px;
+    width: 1300px;
+    gap:20px;
+    border-radius: 30px;
+    margin-inline:auto;
+}
+
+
+.rps-buttons{
+    background-color: var(--bright-color);
+    
+    height: 400px;
+    width: 400px;
+    font-size: 600%;
+    border-radius: 50%;
+    border-color: transparent;
+    border-width: 10px;
+    
+
+}
+.rps-buttons:active{
+    border-color: var(--red-color);
+    border-style:solid;
+    border-width: 10px;
+    background-color: rgb(20,20,20);
+}
+
+#comment-1, #comment-2 {
+    font-size: 2em;
 }
