@@ -33,13 +33,16 @@ function round(pSelect, cSelect){//Takes player selection and computer selection
     console.log("Computer selected: " + numTranslator(cSelect) )
     if(pSelect == cSelect){ 
         comment_1.textContent = "It's a tie!"
+        comment_2 = ""
     } else if ((pSelect == 0 && cSelect == 2) || (pSelect == 1 && cSelect == 0) || (pSelect == 2 && cSelect == 1) ){
         comment_1.textContent = "You win this round! " + numTranslator(pSelect) + " BEATS " + numTranslator(cSelect);
+        comment_2 = ""
         console.log("You win this round! " + numTranslator(pSelect) + " BEATS " + numTranslator(cSelect));
         robotLives -= 1;
         return "You win this round! " + numTranslator(pSelect) + " BEATS " + numTranslator(cSelect);
     } else {
         comment_1.textContent = "You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect)
+        comment_2 = ""
         console.log("You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect));
         userLives -= 1;
         return "You lost this round! " + numTranslator(cSelect) + " BEATS " + numTranslator(pSelect);
