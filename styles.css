@@ -16,6 +16,12 @@ h1, p {
     text-align: center;
     
 }
+#title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4em;
+    margin-bottom: -20px;
+}
+
 #comments{
     margin-top: 130px;
 }
@@ -39,10 +45,13 @@ h1, p {
    
 }
 
+button{
+    transition-duration: 200ms;
+}
 
 .rps-buttons{
     background-color: var(--bright-color);
-    transition-duration: 200ms;
+
     height: 400px;
     width: 400px;
     font-size: 600%;
@@ -104,6 +113,7 @@ h1, p {
     position:fixed;
     top: 45%;
     right: 0%;
+    margin-right:15px;
 }
 
 #restart-page {
@@ -126,9 +136,16 @@ h1, p {
     width: 200px;
     border-radius: 50%;
     background-color: var(--red-color);
-    transition: 200ms ease-in;
+    
 
 }
 #restart-page > button:active{
     background-color: #921c16;
+}
+
+
+
+
+#restart-page >p{
+    font-size: 2em;
 }

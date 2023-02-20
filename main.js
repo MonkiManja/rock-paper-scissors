@@ -1,4 +1,8 @@
 
+
+/*The game counters are broken. But i don't really think it's that important for the enjoyment of the page, maybe i fix them in the future*/ 
+
+
 let userLives = 5;
 let robotLives = 5;
 let userGames = 0;
@@ -39,13 +43,13 @@ function round(pSelect, cSelect){//Takes player selection and computer selection
     if(userLives == 0){
         restartPage.style.transform = "translateY(0%)";
         robotGames += 1;
-        restartText.textContent = `Wins: ${userGames} ~ Loses: ${robotGames}`
+        restartText.textContent = `You lose!`
         return;
     } 
     else if(robotLives == 0){
         restartPage.style.transform = "translateY(0%)";
         userGames += 1
-        restartText.textContent = `Wins: ${userGames} ~ Loses: ${robotGames}`
+        restartText.textContent = `You win!`
         return;
     }
 
